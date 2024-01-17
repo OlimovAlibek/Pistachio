@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
+import CheckOutSteps from '../components/CheckOutSteps';
 import { register } from '../actions/userActions';
 import Loaderr from '../components/Loaderr';
 import Message from '../components/Message';
@@ -18,10 +19,10 @@ function ShippingScreen({history}) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [address, setAddress] = useState(shippingAddress.address)
-  const [city, setCity] = useState(shippingAddress.city)
-  const [postalcode, setPostalcode] = useState(shippingAddress.postalcode)
-  const [country, setCountry] = useState(shippingAddress.country)
+  const [address, setAddress] = useState(shippingAddress.address || '')
+  const [city, setCity] = useState(shippingAddress.city || '')
+  const [postalcode, setPostalcode] = useState(shippingAddress.postalcode || '')
+  const [country, setCountry] = useState(shippingAddress.country || '')
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -33,6 +34,8 @@ function ShippingScreen({history}) {
 
   return (
     <FormContainer>
+
+        <CheckOutSteps step1 step2/>
 
         <h1>Shipping</h1>
 
